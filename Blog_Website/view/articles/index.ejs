@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: #fff; /* White cards */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .card-title {
+            color: #007bff; /* Blue title */
+        }
+
+        .card-subtitle {
+            color: #6c757d; /* Gray subtitle */
+        }
+
+        .card-text {
+            color: #343a40; /* Dark text */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Blue button */
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3;
+        }
+
+        .btn-info {
+            background-color: #17a2b8; /* Teal button */
+            border-color: #17a2b8;
+        }
+
+        .btn-info:hover {
+            background-color: #117a8b; /* Darker teal on hover */
+            border-color: #117a8b;
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Red button */
+            border-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #bd2130; /* Darker red on hover */
+            border-color: #bd2130;
+        }
+    </style>
+    <title>Blog Website</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Scribe</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+        <p>Welcome to the Articles section of our blog. Here you'll find insightful articles written by our talented writers.</p>
+        <!-- Scribe Section -->
+        <a href="/articles/new" class="btn btn-success">Create Article</a>
+        <% articles.forEach(article=>{%>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <%=article.title%>
+                </h4>
+                <div class="card-subtitle text-muted mb-2">
+                    <%=article.createdAt.toLocaleDateString() %>
+                </div>
+                <div class="card-text mb-2">
+                    <%=article.description%>
+                </div>
+                <a href="articles/<%=article.slug%>" class="btn btn-primary">Read More</a>
+                <a href="articles/edit/<%= article.id%>" class="btn btn-info">Edit</a>
+                <form action="/articles/<%=article.id %>?_method=DELETE" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        <%})%>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-V0abCv3KAZjs3e0zvBnZLzQn5RvG2Nz7nqAArBdZB887GpXtUf2Cn9o+ldI21oxM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

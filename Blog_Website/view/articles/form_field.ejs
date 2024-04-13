@@ -1,0 +1,64 @@
+<!-- Assuming you have a CSS file named styles.css -->
+
+<!-- Linking an external CSS file -->
+<link rel="stylesheet" href="/path/to/styles.css">
+
+<!-- Or inline CSS within <style> tags -->
+<style>
+    /* CSS styles for form-group */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    /* CSS styles for labels */
+    label {
+        font-weight: bold;
+    }
+
+    /* CSS styles for inputs and textareas */
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; /* Ensure padding and border are included in width */
+    }
+
+    /* CSS styles for buttons */
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* CSS styles for Cancel button */
+    .btn-secondary {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    /* CSS styles for Save button */
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
+
+<!-- Your HTML code -->
+<div class="form-group">
+    <label for="title">Title</label>
+    <input required value="<%=article.title%>" type="text" name="title" class="form-control">
+</div>
+<div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" class="form-control"><%=article.description%></textarea>
+</div>
+<div class="form-group">
+    <label for="markdown">Markdown</label>
+    <textarea required name="markdown" id="markdown" class="form-control"><%=article.markdown%></textarea>
+</div>
+<br>
+<a href="/" class="btn btn-secondary">Cancel</a>
+<button type="submit" class="btn btn-primary">Save</button>
